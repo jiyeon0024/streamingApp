@@ -1,0 +1,11 @@
+.input {
+  border: none;
+  border-bottom: 1px solid var(--greyishBlue);
+  outline: none;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 50px;
+  color: var(--white);
+  background-color: var(--darkblue);
+  padding-left: 10px;
+}
