@@ -16,7 +16,7 @@
   flex-direction: column;
   /* align-items: center; */
   justify-content: center;
-  padding: 20px;
+  padding: 30px;
   width: 400px;
   border-radius: 20px;
   gap: 30px;
@@ -27,4 +27,27 @@
   font-weight: 300;
   color: var(--white);
   text-align: left;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.link:hover {
+  color: var(--veryDarkblue);
+}
+
+.err {
+  color: var(--red);
+  text-align: right;
+  font-weight: 200;
+  padding-right: 15px;
+  position: absolute;
+  top: 30%;
+  right: 0;
+}
+
+.inputWrap {
+  position: relative;
 }

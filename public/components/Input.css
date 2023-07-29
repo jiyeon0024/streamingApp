@@ -8,4 +8,9 @@
   color: var(--white);
   background-color: var(--darkblue);
   padding-left: 10px;
+  width: 100%;
+}
+
+.errBorder {
+  border-bottom: 1px solid var(--red);
 }
