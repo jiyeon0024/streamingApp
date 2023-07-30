@@ -1,0 +1,45 @@
+.sideBar {
+  background-color: var(--darkblue);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.sideIcon {
+  width: 20px;
+  fill: white;
+}
+
+.sideIcon:hover {
+  fill: var(--red);
+  cursor: pointer;
+}
+
+.logo {
+  margin-bottom: 30px;
+}
+
+.userIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.userIconBox {
+  background: var(--white);
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.navIconBox {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  align-items: center;
+}

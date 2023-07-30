@@ -18,3 +18,12 @@
   background-color: var(--white);
   color: var(--veryDarkblue);
 }
+
+.modalBtn {
+  margin: 0;
+}
+
+.modalBtn:hover {
+  background: var(--darkblue);
+  color: var(--white);
+}

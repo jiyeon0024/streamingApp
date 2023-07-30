@@ -43,11 +43,12 @@
   text-align: right;
   font-weight: 200;
   padding-right: 15px;
-  position: absolute;
-  top: 30%;
-  right: 0;
+  /* position: absolute; */
+  /* top: 30%; */
+  /* right: 0; */
+  padding-top: 10px;
 }
 
 .inputWrap {
-  position: relative;
+  /* position: relative; */
 }

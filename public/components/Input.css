@@ -14,3 +14,15 @@
 .errBorder {
   border-bottom: 1px solid var(--red);
 }
+
+.searchInput {
+  border: none;
+  background: var(--veryDarkblue);
+  width: 100%;
+  line-height: 20px;
+  padding-left: 5px;
+}
+
+.searchInput:focus {
+  border-bottom: 1px solid var(--greyishBlue);
+}

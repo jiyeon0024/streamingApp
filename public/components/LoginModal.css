@@ -1,0 +1,17 @@
+.loginModalWrap {
+  background: var(--white);
+  color: var(--veryDarkblue);
+  padding: 20px;
+  border-radius: 10px;
+  position: absolute;
+  left: 50px;
+  bottom: 60px;
+}
+
+.name {
+  margin-bottom: 10px;
+}
+
+.email {
+  margin-bottom: 30px;
+}

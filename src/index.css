@@ -130,6 +130,8 @@ table {
 
 body {
   font-family: "Outfit", sans-serif;
+  background-color: var(--veryDarkblue);
+  padding: 20px;
 }
 
 :root {
@@ -138,4 +140,29 @@ body {
   --greyishBlue: rgb(90, 105, 143);
   --darkblue: rgb(22, 29, 47);
   --white: rgb(225, 225, 225);
+}
+
+.wrap {
+  display: flex;
+  color: var(--white);
+  /* width: 100vw; */
+  height: 100vh;
+}
+
+.mainContentBox {
+  padding: 20px 20px;
+  width: 100vw;
+}
+
+.trending,
+.recommend {
+  font-size: 20px;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+
+.movieWrap {
+  display: flex;
+
+  gap: 30px;
 }

@@ -13,19 +13,23 @@ function UserContextProvider({ children }) {
 
     data.users.forEach((i) => {
       if (i.email === email && i.password === password) {
-        setUser(i);
         setLoggedIn(true);
+        setUser(i);
         localStorage.setItem("user", JSON.stringify(i));
         return;
-      } else if (email === "" && password === "") {
-        setLoggedIn(false);
+        // } else if (email === "" && password === "") {
+        //   setLoggedIn(false);
+        //   return;
       }
     });
+    console.log(loggedIn);
+    console.log(user);
   };
 
   const logout = () => {
     setUser({});
     setLoggedIn(false);
+    setUser("");
     localStorage.removeItem("user");
   };
 

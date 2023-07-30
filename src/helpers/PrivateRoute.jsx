@@ -3,9 +3,9 @@ import { UserContext } from "../context/UserContext";
 import { Navigate } from "react-router-dom";
 
 function PrivateRoute({ children }) {
-  const { loggedIn } = useContext(UserContext);
+  const { loggedIn, user } = useContext(UserContext);
 
-  if (!loggedIn) {
+  if (!loggedIn && !user) {
     return <Navigate to="/loginPage" />;
   } else {
     return children;

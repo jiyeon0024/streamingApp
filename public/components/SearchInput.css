@@ -1,0 +1,12 @@
+.searchInputWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 90%;
+  margin-bottom: 15px;
+}
+
+.searchIcon {
+  width: 20px;
+}

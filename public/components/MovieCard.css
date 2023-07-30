@@ -1,0 +1,14 @@
+.movieBox {
+  position: relative;
+}
+
+.movieInfo {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.thumbnail {
+  border-radius: 10px;
+  height: 200px;
+}
