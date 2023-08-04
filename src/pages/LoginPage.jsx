@@ -41,7 +41,8 @@ function LoginPage() {
         <div className="inputWrap">
           <Input
             placeholder="Email address"
-            onChange={setEmail}
+            // onChange={setEmail}
+            onChange={(e) => setEmail(e.target.value)}
             className={emailErr ? "errBorder" : "input"}
           ></Input>
           {emailErr ? <p className="err">Not a valid email address</p> : null}
@@ -50,7 +51,8 @@ function LoginPage() {
         <div className="inputWrap">
           <Input
             placeholder="Password"
-            onChange={setPassword}
+            // onChange={setPassword}
+            onChange={(e) => setPassword(e.target.value)}
             className={emailErr ? "errBorder" : "input"}
           ></Input>
           {pwErr ? <p className="err">Can't empty</p> : null}
