@@ -5,10 +5,9 @@ function Input(props) {
   return (
     <input
       className={`input || ${props.className}`}
-      onChange={(e) => {
-        props.onChange(e.currentTarget.value);
-      }}
+      onChange={props.onChange}
       placeholder={props.placeholder}
+      value={props.value}
     ></input>
   );
 }

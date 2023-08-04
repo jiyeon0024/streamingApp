@@ -4,12 +4,14 @@ export const MoviesContext = createContext();
 
 export function MoviesContextProvider({ children }) {
   const [data, setData] = useState([]);
+  const [filtered, setFiltered] = useState([]);
 
   function getData() {
     fetch("../data.json")
       .then((data) => data.json())
       .then((val) => {
         setData(val);
+        setFiltered(val);
       });
   }
   //   console.log(data);
@@ -19,6 +21,8 @@ export function MoviesContextProvider({ children }) {
   }, []);
 
   return (
-    <MoviesContext.Provider value={{ data }}>{children}</MoviesContext.Provider>
+    <MoviesContext.Provider value={{ data, filtered, setFiltered }}>
+      {children}
+    </MoviesContext.Provider>
   );
 }

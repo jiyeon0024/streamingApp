@@ -10,11 +10,16 @@
 
 .sideIcon {
   width: 20px;
-  fill: white;
+}
+
+.click {
+  filter: brightness(5);
+  width: 20px;
 }
 
 .sideIcon:hover {
-  fill: var(--red);
+  filter: invert(36%) sepia(52%) saturate(3841%) hue-rotate(338deg)
+    brightness(107%) contrast(99%);
   cursor: pointer;
 }
 
