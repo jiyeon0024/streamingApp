@@ -191,7 +191,7 @@ body {
   font-weight: 200;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 390px) {
   .wrap {
     flex-direction: column;
   }
@@ -199,24 +199,33 @@ body {
   .navIconBox {
     flex-direction: row;
     justify-content: center;
+    gap: 30px;
   }
 
   .logo {
     margin: 0;
-    padding-right: 20px;
+    padding-right: 15px;
+  }
+
+  .userIconBox {
+    margin-left: 45px;
   }
 
   .sideBar {
     flex-direction: row;
+    justify-content: center;
   }
   .thumbnail {
-    width: 180px;
+    width: 130px;
     height: auto;
   }
-
+  .bookMark {
+    right: 0;
+    left: 100px;
+  }
   .loginModalWrap {
     bottom: -140px;
-    left: 60px;
+    left: 120px;
   }
   .sideIcon,
   .click {
@@ -245,5 +254,9 @@ body {
 
   .details {
     justify-content: left;
+  }
+
+  .movieWrap {
+    justify-content: center;
   }
 }
