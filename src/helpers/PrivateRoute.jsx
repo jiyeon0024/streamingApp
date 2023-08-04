@@ -7,6 +7,8 @@ function PrivateRoute({ children }) {
 
   if (!loggedIn && !user) {
     return <Navigate to="/loginPage" />;
+  } else if (loggedIn && !user) {
+    return children;
   } else {
     return children;
   }
