@@ -14,8 +14,8 @@ function MovieCard({ i }) {
     >
       {play ? (
         <div className="play">
-          <img src="src/assets/icon-play.svg"></img>
-          <p>Play</p>
+          <img src="src/assets/icon-play.svg" className="playIcon"></img>
+          <p className="playTitle">Play</p>
         </div>
       ) : null}
 

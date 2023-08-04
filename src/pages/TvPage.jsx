@@ -59,20 +59,21 @@ function TvPage() {
           </div>
         ) : null}
 
-        {filtered && filtered.length != 29 ? (
+        {/* {filtered && filtered.length != 29 ? (
           <h1 className="trending"></h1>
         ) : (
           <h1 className="trending">Trending</h1>
-        )}
+        )} */}
+        <h1 className="trending">TV Series</h1>
 
         <div className="movieWrap">
           {filtered.map((i) => {
-            if (i.category === "TV Series" && i.isTrending === true) {
+            if (i.category === "TV Series") {
               return <MovieCard i={i}></MovieCard>;
             }
           })}
         </div>
-        {filtered && filtered.length != 29 ? (
+        {/* {filtered && filtered.length != 29 ? (
           <h1 className="trending"></h1>
         ) : (
           <h1 className="recommend">Recommended for you</h1>
@@ -83,7 +84,7 @@ function TvPage() {
               return <MovieCard i={i}></MovieCard>;
             }
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );

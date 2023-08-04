@@ -59,20 +59,20 @@ function MoviesPage() {
           </div>
         ) : null}
 
-        {filtered && filtered.length != 29 ? (
+        {/* {filtered && filtered.length != 29 ? (
           <h1 className="trending"></h1>
         ) : (
           <h1 className="trending">Trending</h1>
-        )}
-
+        )} */}
+        <h1 className="trending">Movies</h1>
         <div className="movieWrap">
           {filtered.map((i) => {
-            if (i.category === "Movie" && i.isTrending === true) {
+            if (i.category === "Movie") {
               return <MovieCard i={i}></MovieCard>;
             }
           })}
         </div>
-        {filtered && filtered.length != 29 ? (
+        {/* {filtered && filtered.length != 29 ? (
           <h1 className="trending"></h1>
         ) : (
           <h1 className="recommend">Recommended for you</h1>
@@ -83,7 +83,7 @@ function MoviesPage() {
               return <MovieCard i={i}></MovieCard>;
             }
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );

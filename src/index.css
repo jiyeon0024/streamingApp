@@ -163,6 +163,7 @@ body {
 
 .movieWrap {
   display: flex;
+  flex-wrap: wrap;
 
   gap: 30px;
 }
@@ -188,4 +189,61 @@ body {
   font-size: 30px;
   margin-bottom: 30px;
   font-weight: 200;
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    flex-direction: column;
+  }
+
+  .navIconBox {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .logo {
+    margin: 0;
+    padding-right: 20px;
+  }
+
+  .sideBar {
+    flex-direction: row;
+  }
+  .thumbnail {
+    width: 180px;
+    height: auto;
+  }
+
+  .loginModalWrap {
+    bottom: -140px;
+    left: 60px;
+  }
+  .sideIcon,
+  .click {
+    width: 15px;
+  }
+  .details {
+    font-size: 10px;
+  }
+
+  .play {
+    padding: 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+  }
+  .playTitle {
+    font-size: 15px;
+  }
+  .playIcon {
+    width: 20px;
+  }
+
+  .movieInfo {
+    position: static;
+  }
+
+  .details {
+    justify-content: left;
+  }
 }

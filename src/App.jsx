@@ -83,7 +83,7 @@ function App() {
         <div className="movieWrap flexWrap">
           {filtered.map((i) => {
             if (i.isTrending === false) {
-              return <MovieCard i={i}></MovieCard>;
+              return <MovieCard i={i} className={`recommend`}></MovieCard>;
             }
           })}
         </div>
