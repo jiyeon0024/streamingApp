@@ -69,23 +69,28 @@ function Sidebar() {
             }}
           />
         </Link>
+        <Link to="/moviesPage">
+          <img
+            className={click2 ? "click" : "sideIcon"}
+            src="src/assets/icon-nav-movies.svg"
+            alt=""
+            onClick={() => {
+              clicked2();
+            }}
+          />
+        </Link>
+        <Link to="/tvPage">
+          {" "}
+          <img
+            className={click3 ? "click" : "sideIcon"}
+            src="src/assets/icon-nav-tv-series.svg"
+            alt=""
+            onClick={() => {
+              clicked3();
+            }}
+          />
+        </Link>
 
-        <img
-          className={click2 ? "click" : "sideIcon"}
-          src="src/assets/icon-nav-movies.svg"
-          alt=""
-          onClick={() => {
-            clicked2();
-          }}
-        />
-        <img
-          className={click3 ? "click" : "sideIcon"}
-          src="src/assets/icon-nav-tv-series.svg"
-          alt=""
-          onClick={() => {
-            clicked3();
-          }}
-        />
         <img
           className={click4 ? "click" : "sideIcon"}
           src="src/assets/icon-nav-bookmark.svg"

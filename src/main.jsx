@@ -8,6 +8,8 @@ import PrivateRoute from "./helpers/PrivateRoute.jsx";
 import UserContextProvider from "./context/UserContext.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import { MoviesContextProvider } from "./context/MoviesContext.jsx";
+import MoviesPage from "./pages/MoviesPage.jsx";
+import TvPage from "./pages/TvPage.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -24,6 +26,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               }
             />
             <Route path="/loginPage" element={<LoginPage />} />
+            <Route path="/moviesPage" element={<MoviesPage />} />
+            <Route path="/tvPage" element={<TvPage />} />
           </Routes>
         </MoviesContextProvider>
       </HashRouter>
