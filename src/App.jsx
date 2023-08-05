@@ -20,22 +20,26 @@ function App() {
 
       <div className="mainContentBox">
         <SearchInput
+          value={inputData}
           placeholder="Search for movies or TV series"
           onChange={(e) => {
             // console.log(inputData);
             setInputData(e.target.value);
-            if (e.target.value.length == 0) {
-              setFiltered(data);
-            }
 
-            data.forEach((i) => {
-              if (i.title.includes(inputData.toLowerCase().trim())) {
-                // return setResult(i.title);
-                // console.log(i.title);
-                setResult(...[i.title], [i.title]);
+            if (e.target.value === "") {
+              setFiltered(data);
+              setResult([]);
+              return;
+            }
+            console.log(inputData);
+            console.log(result);
+
+            let movies = data.map((i) => {
+              if (i.title.toLowerCase().includes(inputData.toLowerCase())) {
+                return i.title;
               }
             });
-            console.log(result);
+            setResult(movies);
           }}
           onClick={(e) => {
             e.preventDefault();
@@ -49,7 +53,21 @@ function App() {
             setFiltered(newInputData);
           }}
         ></SearchInput>
-        {/* {newInputData ? newInputData.map((i) => <p>{i}</p>) : null} */}
+        <div className="inputList">
+          {result.map((i) => {
+            return (
+              <p
+                className="list"
+                onClick={() => {
+                  setInputData(i);
+                  setResult([]);
+                }}
+              >
+                {i}
+              </p>
+            );
+          })}
+        </div>
 
         {filtered && filtered.length !== 29 ? (
           <div className="result">

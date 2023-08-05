@@ -17,36 +17,60 @@ function MoviesPage() {
 
       <div className="mainContentBox">
         <SearchInput
-          placeholder="Search for movies"
+          value={inputData}
+          placeholder="Search for movies "
           onChange={(e) => {
             // console.log(inputData);
             setInputData(e.target.value);
-            if (e.target.value.length == 0) {
-              setFiltered(data);
-            }
 
-            data.forEach((i) => {
-              if (i.title.includes(inputData.toLowerCase().trim())) {
-                // return setResult(i.title);
-                // console.log(i.title);
-                setResult(...[i.title], [i.title]);
+            if (e.target.value === "") {
+              setFiltered(data);
+              setResult([]);
+              return;
+            }
+            console.log(inputData);
+            console.log(result);
+
+            let movies = data.map((i) => {
+              if (
+                i.title
+                  .toLowerCase()
+                  .trim()
+                  .includes(inputData.toLowerCase().trim()) &&
+                i.category == "Movie"
+              ) {
+                return i.title;
               }
             });
-            console.log(result);
+            setResult(movies);
           }}
           onClick={(e) => {
             e.preventDefault();
             let _inputData = inputData.toLowerCase().trim();
 
             newInputData = data.filter((i) =>
-              i.title.toLowerCase().includes(_inputData)
+              i.title.toLowerCase().trim().includes(_inputData)
             );
             // console.log(newInputData[0].title);
 
             setFiltered(newInputData);
           }}
         ></SearchInput>
-        {/* {newInputData ? newInputData.map((i) => <p>{i}</p>) : null} */}
+        <div className="inputList">
+          {result.map((i) => {
+            return (
+              <p
+                className="list"
+                onClick={() => {
+                  setInputData(i);
+                  setResult([]);
+                }}
+              >
+                {i}
+              </p>
+            );
+          })}
+        </div>
 
         {filtered && filtered.length !== 29 ? (
           <div className="result">

@@ -4,9 +4,10 @@
   justify-content: center;
   gap: 10px;
   width: 90%;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .searchIcon {
   width: 20px;
+  cursor: pointer;
 }

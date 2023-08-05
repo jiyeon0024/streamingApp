@@ -17,37 +17,60 @@ function TvPage() {
 
       <div className="mainContentBox">
         <SearchInput
+          value={inputData}
           placeholder="Search for TV series"
           onChange={(e) => {
             // console.log(inputData);
             setInputData(e.target.value);
-            if (e.target.value.length == 0) {
-              setFiltered(data);
-            }
 
-            data.forEach((i) => {
-              if (i.title.includes(inputData.toLowerCase().trim())) {
-                // return setResult(i.title);
-                // console.log(i.title);
-                setResult(...[i.title], [i.title]);
+            if (e.target.value === "") {
+              setFiltered(data);
+              setResult([]);
+              return;
+            }
+            console.log(inputData);
+            console.log(result);
+
+            let movies = data.map((i) => {
+              if (
+                i.title
+                  .toLowerCase()
+                  .trim()
+                  .includes(inputData.toLowerCase().trim()) &&
+                i.category == "TV Series"
+              ) {
+                return i.title;
               }
             });
-            console.log(result);
+            setResult(movies);
           }}
           onClick={(e) => {
             e.preventDefault();
             let _inputData = inputData.toLowerCase().trim();
 
             newInputData = data.filter((i) =>
-              i.title.toLowerCase().includes(_inputData)
+              i.title.toLowerCase().trim().includes(_inputData)
             );
             // console.log(newInputData[0].title);
 
             setFiltered(newInputData);
           }}
         ></SearchInput>
-        {/* {newInputData ? newInputData.map((i) => <p>{i}</p>) : null} */}
-
+        <div className="inputList">
+          {result.map((i) => {
+            return (
+              <p
+                className="list"
+                onClick={() => {
+                  setInputData(i);
+                  setResult([]);
+                }}
+              >
+                {i}
+              </p>
+            );
+          })}
+        </div>{" "}
         {filtered && filtered.length !== 29 ? (
           <div className="result">
             <span className="margin">Found </span>
@@ -58,14 +81,7 @@ function TvPage() {
             <span className="margin"> for '{inputData}'</span>
           </div>
         ) : null}
-
-        {/* {filtered && filtered.length != 29 ? (
-          <h1 className="trending"></h1>
-        ) : (
-          <h1 className="trending">Trending</h1>
-        )} */}
         <h1 className="trending">TV Series</h1>
-
         <div className="movieWrap">
           {filtered.map((i) => {
             if (i.category === "TV Series") {
