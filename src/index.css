@@ -287,9 +287,18 @@ body {
     justify-content: left;
   }
   .result {
-    font-size: 20px;
+    font-size: 18px;
+    max-width: 25ch;
+    margin-bottom: 0;
   }
   .title {
     font-size: 10px;
+  }
+  .inputList {
+    width: 73%;
+  }
+  .trending {
+    padding: 0;
+    margin-bottom: 10px;
   }
 }
