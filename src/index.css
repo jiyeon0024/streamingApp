@@ -203,7 +203,7 @@ body {
   top: 45px;
   left: 50px;
   z-index: 10;
-  width: 82%;
+  width: 86.5%;
   padding: 10px;
 
   border-radius: 5px;
@@ -241,6 +241,7 @@ body {
   .sideBar {
     flex-direction: row;
     justify-content: center;
+    height: auto;
   }
   .thumbnail {
     width: 130px;
@@ -251,8 +252,9 @@ body {
     left: 100px;
   }
   .loginModalWrap {
-    bottom: -140px;
-    left: 120px;
+    bottom: -160px;
+    left: 80px;
+    z-index: 20;
   }
   .sideIcon,
   .click {
@@ -284,6 +286,9 @@ body {
   }
 
   .movieWrap {
-    justify-content: center;
+    justify-content: left;
+  }
+  .result {
+    font-size: 20px;
   }
 }

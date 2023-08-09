@@ -48,12 +48,15 @@ function MoviesPage() {
             e.preventDefault();
             let _inputData = inputData.toLowerCase().trim();
 
-            newInputData = data.filter((i) =>
-              i.title.toLowerCase().trim().includes(_inputData)
+            newInputData = data.filter(
+              (i) =>
+                i.title.toLowerCase().trim().includes(_inputData) &&
+                i.category == "Movie"
             );
             // console.log(newInputData[0].title);
 
             setFiltered(newInputData);
+            setResult([]);
           }}
         ></SearchInput>
         <div className="inputList">
@@ -71,7 +74,7 @@ function MoviesPage() {
             );
           })}
         </div>
-
+        {console.log(filtered.length)}
         {filtered && filtered.length !== 29 ? (
           <div className="result">
             <span className="margin">Found </span>

@@ -18,6 +18,7 @@ function LoginPage() {
 
   function submit(e) {
     e.preventDefault();
+
     if (!EMAILREGEX.test(email)) {
       setEmailErr(true);
     } else {
@@ -32,6 +33,8 @@ function LoginPage() {
 
     login(email, password);
     console.log(loggedIn);
+    console.log(user);
+    console.log(email, password);
   }
   return (
     <form className="mainBox" onSubmit={submit}>
@@ -44,7 +47,9 @@ function LoginPage() {
             // onChange={setEmail}
             onChange={(e) => setEmail(e.target.value)}
             className={emailErr ? "errBorder" : "input"}
+            value={email}
           ></Input>
+
           {emailErr ? <p className="err">Not a valid email address</p> : null}
         </div>
 
@@ -53,13 +58,14 @@ function LoginPage() {
             placeholder="Password"
             // onChange={setPassword}
             onChange={(e) => setPassword(e.target.value)}
-            className={emailErr ? "errBorder" : "input"}
+            className={pwErr ? "errBorder" : "input"}
+            value={password}
           ></Input>
           {pwErr ? <p className="err">Can't empty</p> : null}
         </div>
 
         <Button>
-          {loggedIn ? (
+          {loggedIn && user ? (
             <Link to="/" className="link">
               Login to your account
             </Link>

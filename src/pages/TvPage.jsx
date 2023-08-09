@@ -48,12 +48,15 @@ function TvPage() {
             e.preventDefault();
             let _inputData = inputData.toLowerCase().trim();
 
-            newInputData = data.filter((i) =>
-              i.title.toLowerCase().trim().includes(_inputData)
+            newInputData = data.filter(
+              (i) =>
+                i.title.toLowerCase().trim().includes(_inputData) &&
+                i.category == "TV Series"
             );
             // console.log(newInputData[0].title);
 
             setFiltered(newInputData);
+            setResult([]);
           }}
         ></SearchInput>
         <div className="inputList">

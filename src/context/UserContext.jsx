@@ -16,12 +16,14 @@ function UserContextProvider({ children }) {
         setLoggedIn(true);
         setUser(i);
         localStorage.setItem("user", JSON.stringify(i));
+
         return;
         // } else if (email === "" && password === "") {
         //   setLoggedIn(false);
         //   return;
       }
     });
+
     console.log(loggedIn);
     console.log(user);
   };
@@ -29,8 +31,13 @@ function UserContextProvider({ children }) {
   const logout = () => {
     setUser({});
     setLoggedIn(false);
-    setUser("");
+    console.log("logout");
+    // localStorage.removeItem("user");
+
+    // setUser("");
     localStorage.removeItem("user");
+
+    return;
   };
 
   useEffect(() => {

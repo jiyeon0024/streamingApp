@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./context/UserContext";
 import Sidebar from "../public/components/Sidebar";
 import SearchInput from "../public/components/SearchInput";
@@ -6,13 +6,15 @@ import MovieCard from "../public/components/MovieCard";
 import { MoviesContext } from "./context/MoviesContext";
 
 function App() {
-  const { logout } = useContext(UserContext);
+  const { logout, user, loggedIn } = useContext(UserContext);
   const { data, setFiltered, filtered } = useContext(MoviesContext);
   const [inputData, setInputData] = useState("");
   const [result, setResult] = useState([]);
 
   let newInputData = [];
   // console.log(data);
+  console.log(user);
+  console.log(loggedIn);
 
   return (
     <div className="wrap">
@@ -51,6 +53,7 @@ function App() {
             // console.log(newInputData[0].title);
 
             setFiltered(newInputData);
+            setResult([]);
           }}
         ></SearchInput>
         <div className="inputList">

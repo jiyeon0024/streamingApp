@@ -6,7 +6,7 @@ import LoginModal from "./LoginModal";
 import { Link } from "react-router-dom";
 
 function Sidebar() {
-  const { user } = useContext(UserContext);
+  const { user, setFiltered, filtered, loggedIn } = useContext(UserContext);
   const [modal, setModal] = useState(false);
   const [click1, setClick1] = useState(false);
   const [click2, setClick2] = useState(false);
@@ -23,7 +23,6 @@ function Sidebar() {
 
   function clicked() {
     if (click1) {
-      console.log("1");
       setClick1(false);
     } else {
       setClick1(true);
