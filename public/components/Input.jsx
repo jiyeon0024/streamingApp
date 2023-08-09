@@ -8,6 +8,7 @@ function Input(props) {
       onChange={props.onChange}
       placeholder={props.placeholder}
       value={props.value}
+      type={props.type}
     ></input>
   );
 }

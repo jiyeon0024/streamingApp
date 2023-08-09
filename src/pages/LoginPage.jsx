@@ -48,6 +48,7 @@ function LoginPage() {
             onChange={(e) => setEmail(e.target.value)}
             className={emailErr ? "errBorder" : "input"}
             value={email}
+            type="email"
           ></Input>
 
           {emailErr ? <p className="err">Not a valid email address</p> : null}
@@ -56,6 +57,7 @@ function LoginPage() {
         <div className="inputWrap">
           <Input
             placeholder="Password"
+            type="password"
             // onChange={setPassword}
             onChange={(e) => setPassword(e.target.value)}
             className={pwErr ? "errBorder" : "input"}

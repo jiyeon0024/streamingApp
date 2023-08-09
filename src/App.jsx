@@ -4,6 +4,7 @@ import Sidebar from "../public/components/Sidebar";
 import SearchInput from "../public/components/SearchInput";
 import MovieCard from "../public/components/MovieCard";
 import { MoviesContext } from "./context/MoviesContext";
+import MovieCard2 from "../public/components/MovieCard2";
 
 function App() {
   const { logout, user, loggedIn } = useContext(UserContext);
@@ -104,7 +105,7 @@ function App() {
         <div className="movieWrap flexWrap">
           {filtered.map((i) => {
             if (i.isTrending === false) {
-              return <MovieCard i={i} className={`recommend`}></MovieCard>;
+              return <MovieCard2 i={i}></MovieCard2>;
             }
           })}
         </div>

@@ -1,14 +1,14 @@
 import React, { useContext, useState } from "react";
-import { MoviesContext } from "../../src/context/MoviesContext";
-import "./MovieCard.css";
 
-function MovieCard({ i, recommend }) {
+import "./MovieCard2.css";
+
+function MovieCard2({ i }) {
   const [play, setPlay] = useState(false);
   const [bookMark, setBookMark] = useState(false);
 
   return (
     <div
-      className="movieBox"
+      className="movieBox2"
       onMouseEnter={() => setPlay(true)}
       onMouseLeave={() => setPlay(false)}
     >
@@ -25,7 +25,7 @@ function MovieCard({ i, recommend }) {
         <img src="src/assets/icon-bookmark-empty.svg" alt="" />
       </div>
 
-      <div className="movieInfo">
+      <div className="movieInfo2">
         <div className="details">
           <p>{i.year}</p>
           <span className="dot">.</span>
@@ -46,4 +46,4 @@ function MovieCard({ i, recommend }) {
   );
 }
 
-export default MovieCard;
+export default MovieCard2;

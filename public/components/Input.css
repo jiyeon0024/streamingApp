@@ -25,4 +25,5 @@
 
 .searchInput:focus {
   border-bottom: 1px solid var(--greyishBlue);
+  caret-color: var(--red);
 }

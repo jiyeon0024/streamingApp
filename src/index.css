@@ -174,7 +174,7 @@ body {
 }
 
 .recommend {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .recommendBox {
@@ -218,6 +218,7 @@ body {
 .list:hover {
   color: var(--greyishBlue);
 }
+
 @media (max-width: 390px) {
   .wrap {
     flex-direction: column;
@@ -265,20 +266,17 @@ body {
   }
 
   .play {
-    padding: 5px;
+    /* padding: 5px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, -100%); */
+    display: none;
   }
   .playTitle {
     font-size: 15px;
   }
   .playIcon {
     width: 20px;
-  }
-
-  .movieInfo {
-    position: static;
   }
 
   .details {
@@ -290,5 +288,8 @@ body {
   }
   .result {
     font-size: 20px;
+  }
+  .title {
+    font-size: 10px;
   }
 }

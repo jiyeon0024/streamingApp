@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 
 import Sidebar from "../../public/components/Sidebar";
 import SearchInput from "../../public/components/SearchInput";
-import MovieCard from "../../public/components/MovieCard";
+import MovieCard2 from "../../public/components/MovieCard2";
 import { MoviesContext } from "../context/MoviesContext";
 
 function TvPage() {
@@ -88,7 +88,7 @@ function TvPage() {
         <div className="movieWrap">
           {filtered.map((i) => {
             if (i.category === "TV Series") {
-              return <MovieCard i={i}></MovieCard>;
+              return <MovieCard2 i={i}></MovieCard2>;
             }
           })}
         </div>
