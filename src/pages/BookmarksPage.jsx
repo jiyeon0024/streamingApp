@@ -6,12 +6,16 @@ import SearchInput from "../components/SearchInput";
 import MovieCard2 from "../components/MovieCard2";
 import { MoviesContext } from "../context/MoviesContext";
 import { UserContext } from "../context/UserContext";
+import { useLocation } from "react-router-dom";
 
-function BookmarksPage(props) {
+function BookmarksPage() {
   const { logout, user, loggedIn } = useContext(UserContext);
   const { data, setFiltered, filtered } = useContext(MoviesContext);
   const [inputData, setInputData] = useState("");
   const [result, setResult] = useState([]);
+  const location = useLocation({});
+  const dataLocation = location.state.bookmarkData;
+  console.log(dataLocation); // bookmarked movies
 
   let newInputData = [];
   // console.log(data);
@@ -37,7 +41,7 @@ function BookmarksPage(props) {
             console.log(inputData);
             console.log(result);
 
-            let movies = data.map((i) => {
+            let movies = dataLocation.map((i) => {
               if (i.title.toLowerCase().includes(inputData.toLowerCase())) {
                 return i.title;
               }

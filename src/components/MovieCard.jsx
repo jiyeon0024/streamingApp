@@ -2,17 +2,19 @@ import React, { useContext, useEffect, useState } from "react";
 import { MoviesContext } from "../../src/context/MoviesContext";
 import "./MovieCard.css";
 import { UserContext } from "../context/UserContext";
+import BookmarksPage from "../pages/BookmarksPage";
 
-function MovieCard({ i }) {
+function MovieCard({ i, setBookmarkData }) {
   const [play, setPlay] = useState(false);
 
   const [isBookMark, setIsBookMark] = useState(false);
+
   let bookmarks = [];
 
   function handleBookmark() {
     if (localStorage.getItem("bookmark")) {
       bookmarks = JSON.parse(localStorage.getItem("bookmark"));
-      console.log(bookmarks);
+      // console.log(bookmarks);
       if (bookmarks && bookmarks.includes(i.title)) {
         bookmarks = bookmarks.filter((item) => item != i.title);
         setIsBookMark(false);
@@ -56,7 +58,10 @@ function MovieCard({ i }) {
       <div
         className="bookMark"
         onMouseEnter={() => setPlay(false)}
-        onClick={() => handleBookmark()}
+        onClick={() => {
+          handleBookmark();
+          setBookmarkData(bookmarks);
+        }}
       >
         {isBookMark ? (
           <img src="src/assets/icon-bookmark-full.svg" alt="" />

@@ -11,6 +11,7 @@ import { MoviesContextProvider } from "./context/MoviesContext.jsx";
 import MoviesPage from "./pages/MoviesPage.jsx";
 import TvPage from "./pages/TvPage.jsx";
 import BookmarksPage from "./pages/BookmarksPage.jsx";
+import MovieCard from "./components/MovieCard.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

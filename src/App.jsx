@@ -12,15 +12,15 @@ function App() {
   const { data, setFiltered, filtered } = useContext(MoviesContext);
   const [inputData, setInputData] = useState("");
   const [result, setResult] = useState([]);
-
+  const [bookmarkData, setBookmarkData] = useState({});
   let newInputData = [];
   // console.log(data);
-  console.log(user);
-  console.log(loggedIn);
-
+  // console.log(user);
+  // console.log(loggedIn);
+  console.log(bookmarkData);
   return (
     <div className="wrap">
-      <Sidebar></Sidebar>
+      <Sidebar bookmarkData={bookmarkData}></Sidebar>
 
       <div className="mainContentBox">
         <SearchInput
@@ -94,7 +94,9 @@ function App() {
         <div className="movieWrap">
           {filtered.map((i) => {
             if (i.isTrending === true) {
-              return <MovieCard i={i}></MovieCard>;
+              return (
+                <MovieCard i={i} setBookmarkData={setBookmarkData}></MovieCard>
+              );
             }
           })}
         </div>
