@@ -3,16 +3,15 @@ import "./LoginPage.css";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { Link } from "react-router-dom";
-import Button from "../../public/components/Button.jsx";
-import Input from "../../public/components/Input.jsx";
+import Button from "../components/Button";
+import Input from "../components/Input";
 
 function LoginPage() {
   const { loggedIn, user, login } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const EMAILREGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  const PWREGEX =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  const PWREGEX = /^[A-Za-z]\w{7,14}$/;
   const [emailErr, setEmailErr] = useState(false);
   const [pwErr, setPwErr] = useState(false);
 
@@ -21,12 +20,15 @@ function LoginPage() {
 
     if (!EMAILREGEX.test(email)) {
       setEmailErr(true);
+
+      return;
     } else {
       setEmailErr(false);
     }
 
     if (!PWREGEX.test(password)) {
       setPwErr(true);
+      return;
     } else {
       setPwErr(false);
     }

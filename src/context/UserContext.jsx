@@ -3,13 +3,13 @@ import { createContext, useEffect, useState } from "react";
 export const UserContext = createContext();
 
 function UserContextProvider({ children }) {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState({});
+  // const [loggedIn, setLoggedIn] = useState(false);
+  // const [user, setUser] = useState({});
 
   const login = async (email, password) => {
     const response = await fetch("../user.json");
     const data = await response.json();
-    console.log(data.users);
+    // console.log(data.users);
 
     data.users.forEach((i) => {
       if (i.email === email && i.password === password) {
@@ -24,8 +24,8 @@ function UserContextProvider({ children }) {
       }
     });
 
-    console.log(loggedIn);
-    console.log(user);
+    // console.log(loggedIn);
+    // console.log(user);
   };
 
   const logout = () => {
@@ -40,6 +40,15 @@ function UserContextProvider({ children }) {
     return;
   };
 
+  const [user, setUser] = useState(() => {
+    const localUser = localStorage.getItem("user");
+    return localUser ? JSON.parse(localUser) : {};
+  });
+
+  const [loggedIn, setLoggedIn] = useState(() => {
+    return localStorage.getItem("user") ? true : false;
+  });
+
   useEffect(() => {
     if (localStorage.getItem("user")) {
       setLoggedIn(true);
@@ -48,7 +57,14 @@ function UserContextProvider({ children }) {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedIn, login, user, logout }}>
+    <UserContext.Provider
+      value={{
+        loggedIn,
+        login,
+        user,
+        logout,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

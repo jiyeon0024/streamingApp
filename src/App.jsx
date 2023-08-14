@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./context/UserContext";
-import Sidebar from "../public/components/Sidebar";
-import SearchInput from "../public/components/SearchInput";
-import MovieCard from "../public/components/MovieCard";
+import Sidebar from "./components/Sidebar";
+import SearchInput from "./components/SearchInput";
+
+import MovieCard from "./components/MovieCard";
+import MovieCard2 from "./components/MovieCard2";
 import { MoviesContext } from "./context/MoviesContext";
-import MovieCard2 from "../public/components/MovieCard2";
 
 function App() {
   const { logout, user, loggedIn } = useContext(UserContext);
@@ -34,8 +35,8 @@ function App() {
               setResult([]);
               return;
             }
-            console.log(inputData);
-            console.log(result);
+            // console.log(inputData);
+            // console.log(result);
 
             let movies = data.map((i) => {
               if (i.title.toLowerCase().includes(inputData.toLowerCase())) {

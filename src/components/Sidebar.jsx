@@ -4,6 +4,7 @@ import { UserContext } from "../../src/context/UserContext";
 import { useSearchParams } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import { Link } from "react-router-dom";
+import Img from "./Img";
 
 function Sidebar() {
   const { user, setFiltered, filtered, loggedIn } = useContext(UserContext);
@@ -79,7 +80,6 @@ function Sidebar() {
           />
         </Link>
         <Link to="/tvPage">
-          {" "}
           <img
             className={click3 ? "click" : "sideIcon"}
             src="src/assets/icon-nav-tv-series.svg"
@@ -90,14 +90,24 @@ function Sidebar() {
           />
         </Link>
 
-        <img
-          className={click4 ? "click" : "sideIcon"}
-          src="src/assets/icon-nav-bookmark.svg"
-          alt=""
-          onClick={() => {
-            clicked4();
-          }}
-        />
+        <Link to="/bookmarkPage">
+          {/* <img
+            className={click4 ? "click" : "sideIcon"}
+            src="src/assets/icon-nav-bookmark.svg"
+            alt=""
+            onClick={() => {
+              clicked4();
+            }}
+          /> */}
+          <Img
+            className={click4 ? "click" : "sideIcon"}
+            src="src/assets/icon-nav-bookmark.svg"
+            alt=""
+            onClick={() => {
+              clicked4();
+            }}
+          ></Img>
+        </Link>
       </div>
 
       <div className="userIconBox">

@@ -163,7 +163,7 @@ body {
 .recommend {
   font-size: 20px;
   font-weight: 200;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .movieWrap {
@@ -174,7 +174,7 @@ body {
 }
 
 .recommend {
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .recommendBox {

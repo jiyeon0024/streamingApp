@@ -5,12 +5,17 @@ import Sidebar from "../components/Sidebar";
 import SearchInput from "../components/SearchInput";
 import MovieCard2 from "../components/MovieCard2";
 import { MoviesContext } from "../context/MoviesContext";
+import { UserContext } from "../context/UserContext";
 
-function MoviesPage() {
+function BookmarksPage(props) {
+  const { logout, user, loggedIn } = useContext(UserContext);
   const { data, setFiltered, filtered } = useContext(MoviesContext);
   const [inputData, setInputData] = useState("");
   const [result, setResult] = useState([]);
+
   let newInputData = [];
+  // console.log(data);
+  console.log(user);
 
   return (
     <div className="wrap">
@@ -19,7 +24,7 @@ function MoviesPage() {
       <div className="mainContentBox">
         <SearchInput
           value={inputData}
-          placeholder="Search for movies "
+          placeholder="Search for bookmarked shows"
           onChange={(e) => {
             // console.log(inputData);
             setInputData(e.target.value);
@@ -33,13 +38,7 @@ function MoviesPage() {
             console.log(result);
 
             let movies = data.map((i) => {
-              if (
-                i.title
-                  .toLowerCase()
-                  .trim()
-                  .includes(inputData.toLowerCase().trim()) &&
-                i.category == "Movie"
-              ) {
+              if (i.title.toLowerCase().includes(inputData.toLowerCase())) {
                 return i.title;
               }
             });
@@ -49,10 +48,8 @@ function MoviesPage() {
             e.preventDefault();
             let _inputData = inputData.toLowerCase().trim();
 
-            newInputData = data.filter(
-              (i) =>
-                i.title.toLowerCase().trim().includes(_inputData) &&
-                i.category == "Movie"
+            newInputData = data.filter((i) =>
+              i.title.toLowerCase().includes(_inputData)
             );
             // console.log(newInputData[0].title);
 
@@ -75,7 +72,7 @@ function MoviesPage() {
             );
           })}
         </div>
-        {console.log(filtered.length)}
+
         {filtered && filtered.length !== 29 ? (
           <div className="result">
             <span className="margin">Found </span>
@@ -87,12 +84,12 @@ function MoviesPage() {
           </div>
         ) : null}
 
-        {/* {filtered && filtered.length != 29 ? (
+        {filtered && filtered.length != 29 ? (
           <h1 className="trending"></h1>
         ) : (
-          <h1 className="trending">Trending</h1>
-        )} */}
-        <h1 className="trending">Movies</h1>
+          <h1 className="trending">Bookmarked Movies</h1>
+        )}
+
         <div className="movieWrap">
           {filtered.map((i) => {
             if (i.category === "Movie") {
@@ -100,21 +97,21 @@ function MoviesPage() {
             }
           })}
         </div>
-        {/* {filtered && filtered.length != 29 ? (
+        {filtered && filtered.length != 29 ? (
           <h1 className="trending"></h1>
         ) : (
-          <h1 className="recommend">Recommended for you</h1>
+          <h1 className="recommend">Bookmarked TV Series</h1>
         )}
         <div className="movieWrap flexWrap">
           {filtered.map((i) => {
-            if (i.category === "Movie" && i.isTrending === false) {
-              return <MovieCard i={i}></MovieCard>;
+            if (i.category == "TV Series") {
+              return <MovieCard2 i={i}></MovieCard2>;
             }
           })}
-        </div> */}
+        </div>
       </div>
     </div>
   );
 }
 
-export default MoviesPage;
+export default BookmarksPage;

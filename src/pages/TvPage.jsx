@@ -1,9 +1,9 @@
 import React from "react";
 import { useContext, useState } from "react";
 
-import Sidebar from "../../public/components/Sidebar";
-import SearchInput from "../../public/components/SearchInput";
-import MovieCard2 from "../../public/components/MovieCard2";
+import Sidebar from "../components/Sidebar";
+import SearchInput from "../components/SearchInput";
+import MovieCard2 from "../components/MovieCard2";
 import { MoviesContext } from "../context/MoviesContext";
 
 function TvPage() {

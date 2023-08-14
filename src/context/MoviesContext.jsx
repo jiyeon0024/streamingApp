@@ -5,7 +5,6 @@ export const MoviesContext = createContext();
 export function MoviesContextProvider({ children }) {
   const [data, setData] = useState([]);
   const [filtered, setFiltered] = useState([]);
-
   function getData() {
     fetch("../data.json")
       .then((data) => data.json())
@@ -21,7 +20,13 @@ export function MoviesContextProvider({ children }) {
   }, []);
 
   return (
-    <MoviesContext.Provider value={{ data, filtered, setFiltered }}>
+    <MoviesContext.Provider
+      value={{
+        data,
+        filtered,
+        setFiltered,
+      }}
+    >
       {children}
     </MoviesContext.Provider>
   );
