@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from "react";
 import "./MovieCard2.css";
 import { MoviesContext } from "../../src/context/MoviesContext";
 
-function MovieCard2({ i }) {
+function MovieCard2({ i, setBookmarkData }) {
   const [play, setPlay] = useState(false);
 
   const [isBookMark, setIsBookMark] = useState(false);
@@ -56,7 +56,10 @@ function MovieCard2({ i }) {
       <div
         className="bookMark"
         onMouseEnter={() => setPlay(false)}
-        onClick={() => handleBookmark()}
+        onClick={() => {
+          handleBookmark();
+          setBookmarkData(bookmarks);
+        }}
       >
         {isBookMark ? (
           <img src="src/assets/icon-bookmark-full.svg" alt="" />

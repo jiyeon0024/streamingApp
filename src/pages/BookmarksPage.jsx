@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 
 import Sidebar from "../components/Sidebar";
 import SearchInput from "../components/SearchInput";
-import MovieCard2 from "../components/MovieCard2";
+import MovieCard from "../components/MovieCard";
 import { MoviesContext } from "../context/MoviesContext";
 import { UserContext } from "../context/UserContext";
 import { useLocation } from "react-router-dom";
@@ -13,7 +13,7 @@ function BookmarksPage() {
   const { data, setFiltered, filtered } = useContext(MoviesContext);
   const [inputData, setInputData] = useState("");
   const [result, setResult] = useState([]);
-  const location = useLocation({});
+  const location = useLocation([]);
   const dataLocation = location.state.bookmarkData;
   console.log(dataLocation); // bookmarked movies
 
@@ -94,25 +94,25 @@ function BookmarksPage() {
           <h1 className="trending">Bookmarked Movies</h1>
         )}
 
-        <div className="movieWrap">
-          {filtered.map((i) => {
+        {/* <div className="movieWrap">
+          {Object.keys(dataLocation).map((i) => {
             if (i.category === "Movie") {
-              return <MovieCard2 i={i}></MovieCard2>;
+              return <MovieCard i={i}></MovieCard>;
             }
           })}
-        </div>
+        </div> */}
         {filtered && filtered.length != 29 ? (
           <h1 className="trending"></h1>
         ) : (
           <h1 className="recommend">Bookmarked TV Series</h1>
         )}
-        <div className="movieWrap flexWrap">
-          {filtered.map((i) => {
+        {/* <div className="movieWrap flexWrap">
+          {Object.keys(dataLocation).map((i) => {
             if (i.category == "TV Series") {
-              return <MovieCard2 i={i}></MovieCard2>;
+              return <MovieCard i={i}></MovieCard>;
             }
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );

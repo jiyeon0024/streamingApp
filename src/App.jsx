@@ -12,7 +12,7 @@ function App() {
   const { data, setFiltered, filtered } = useContext(MoviesContext);
   const [inputData, setInputData] = useState("");
   const [result, setResult] = useState([]);
-  const [bookmarkData, setBookmarkData] = useState({});
+  const [bookmarkData, setBookmarkData] = useState([]);
   let newInputData = [];
   // console.log(data);
   // console.log(user);
