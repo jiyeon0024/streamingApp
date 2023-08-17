@@ -4,7 +4,6 @@ import { UserContext } from "../../src/context/UserContext";
 import { useSearchParams } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import { Link } from "react-router-dom";
-import Img from "./Img";
 
 function Sidebar() {
   const { user, setFiltered, filtered, loggedIn } = useContext(UserContext);
@@ -57,12 +56,12 @@ function Sidebar() {
   return (
     <div className="sideBar">
       <div className="navIconBox">
-        <img className="logo" src="src/assets/logo.svg" alt="" />
+        <img className="logo" src="assets/assets/logo.svg" alt="" />
 
         <Link to="/">
           <img
             className={click1 ? "click" : "sideIcon"}
-            src="src/assets/icon-nav-home.svg"
+            src="assets/assets/icon-nav-home.svg"
             alt=""
             onClick={() => {
               clicked();
@@ -72,7 +71,7 @@ function Sidebar() {
         <Link to="/moviesPage">
           <img
             className={click2 ? "click" : "sideIcon"}
-            src="src/assets/icon-nav-movies.svg"
+            src="assets/assets/icon-nav-movies.svg"
             alt=""
             onClick={() => {
               clicked2();
@@ -82,7 +81,7 @@ function Sidebar() {
         <Link to="/tvPage">
           <img
             className={click3 ? "click" : "sideIcon"}
-            src="src/assets/icon-nav-tv-series.svg"
+            src="assets/assets/icon-nav-tv-series.svg"
             alt=""
             onClick={() => {
               clicked3();
@@ -91,22 +90,14 @@ function Sidebar() {
         </Link>
 
         <Link to="/bookmarkPage">
-          {/* <img
+          <img
             className={click4 ? "click" : "sideIcon"}
-            src="src/assets/icon-nav-bookmark.svg"
+            src="assets/assets/icon-nav-bookmark.svg"
             alt=""
             onClick={() => {
               clicked4();
             }}
-          /> */}
-          <Img
-            className={click4 ? "click" : "sideIcon"}
-            src="src/assets/icon-nav-bookmark.svg"
-            alt=""
-            onClick={() => {
-              clicked4();
-            }}
-          ></Img>
+          />
         </Link>
       </div>
 

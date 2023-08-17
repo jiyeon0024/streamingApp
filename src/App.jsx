@@ -12,7 +12,6 @@ function App() {
   const { data, setFiltered, filtered } = useContext(MoviesContext);
   const [inputData, setInputData] = useState("");
   const [result, setResult] = useState([]);
-  const { checkBookmark } = useContext(MoviesContext);
 
   let newInputData = [];
   // console.log(data);
@@ -95,9 +94,7 @@ function App() {
         <div className="movieWrap">
           {filtered.map((i) => {
             if (i.isTrending === true) {
-              return (
-                <MovieCard i={i} checkBookmark={checkBookmark}></MovieCard>
-              );
+              return <MovieCard i={i}></MovieCard>;
             }
           })}
         </div>
@@ -109,9 +106,7 @@ function App() {
         <div className="movieWrap flexWrap">
           {filtered.map((i) => {
             if (i.isTrending === false) {
-              return (
-                <MovieCard2 i={i} checkBookmark={checkBookmark}></MovieCard2>
-              );
+              return <MovieCard2 i={i}></MovieCard2>;
             }
           })}
         </div>

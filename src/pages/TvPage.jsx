@@ -92,18 +92,6 @@ function TvPage() {
             }
           })}
         </div>
-        {/* {filtered && filtered.length != 29 ? (
-          <h1 className="trending"></h1>
-        ) : (
-          <h1 className="recommend">Recommended for you</h1>
-        )}
-        <div className="movieWrap flexWrap">
-          {filtered.map((i) => {
-            if (i.category === "TV Series" && i.isTrending === false) {
-              return <MovieCard i={i}></MovieCard>;
-            }
-          })}
-        </div> */}
       </div>
     </div>
   );

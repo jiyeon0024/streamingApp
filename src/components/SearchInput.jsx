@@ -7,7 +7,7 @@ function SearchInput(props) {
     <div className="searchInputWrap">
       <img
         className="searchIcon"
-        src="src/assets/icon-search.svg"
+        src="assets/assets/icon-search.svg"
         alt=""
         onClick={props.onClick}
       />

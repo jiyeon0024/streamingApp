@@ -16,33 +16,28 @@ function MovieCard2({ i, checkBookmark }) {
     >
       {play ? (
         <div className="play">
-          <img src="src/assets/icon-play.svg" className="playIcon"></img>
+          <img src="assets/assets/icon-play.svg" className="playIcon"></img>
           <p className="playTitle">Play</p>
         </div>
       ) : null}
 
       <img src={i.thumbnail.regular.large} className="thumbnail"></img>
 
-      <div
-        className="bookMark"
-        onMouseEnter={() => setPlay(false)}
-        onClick={checkBookmark}
-      >
-        {console.log(i.title)}
-        {/* {bookmarks.length > 0 &&
-        bookmarks?.find((movie) => movie.title === i.title) ? (
+      <div className="bookMark" onMouseEnter={() => setPlay(false)}>
+        {console.log(bookmarks?.find((movie) => movie?.title === i.title))}
+        {bookmarks?.find((movie) => movie?.title === i.title) !== undefined ? (
           <img
-            onClick={() => addBookmark(i.title)}
-            src="src/assets/icon-bookmark-full.svg"
+            onClick={() => removeBookmark(i.title)}
+            src="assets/assets/icon-bookmark-full.svg"
             alt=""
           />
         ) : (
           <img
-            onClick={() => removeBookmark(i.title)}
-            src="src/assets/icon-bookmark-empty.svg"
+            onClick={() => addBookmark(i.title)}
+            src="assets/assets/icon-bookmark-empty.svg"
             alt=""
           />
-        )} */}
+        )}
       </div>
 
       <div className="movieInfo2">
@@ -50,9 +45,9 @@ function MovieCard2({ i, checkBookmark }) {
           <p>{i.year}</p>
           <span className="dot">.</span>
           {i.category === "Movie" ? (
-            <img src="src/assets/icon-category-movie.svg" alt="" />
+            <img src="assets/assets/icon-category-movie.svg" alt="" />
           ) : (
-            <img src="src/assets/icon-category-tv.svg" alt="" />
+            <img src="assets/assets/icon-category-tv.svg" alt="" />
           )}
 
           <p>{i.category}</p>

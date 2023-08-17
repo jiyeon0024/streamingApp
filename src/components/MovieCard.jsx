@@ -3,10 +3,10 @@ import { MoviesContext } from "../../src/context/MoviesContext";
 import "./MovieCard.css";
 import { UserContext } from "../context/UserContext";
 
-function MovieCard({ i, checkBookmark }) {
+function MovieCard({ i }) {
   const [play, setPlay] = useState(false);
   const { bookmarks, addBookmark, removeBookmark } = useContext(MoviesContext);
-
+  console.log(typeof bookmarks);
   return (
     <div
       className="movieBox"
@@ -15,28 +15,24 @@ function MovieCard({ i, checkBookmark }) {
     >
       {play ? (
         <div className="play">
-          <img src="src/assets/icon-play.svg" className="playIcon"></img>
+          <img src="assets/assets/icon-play.svg" className="playIcon"></img>
           <p className="playTitle">Play</p>
         </div>
       ) : null}
 
       <img src={i.thumbnail.regular.large} className="thumbnail"></img>
 
-      <div
-        className="bookMark"
-        onMouseEnter={() => setPlay(false)}
-        onClick={checkBookmark}
-      >
-        {bookmarks ? (
+      <div className="bookMark" onMouseEnter={() => setPlay(false)}>
+        {bookmarks?.find((movie) => movie?.title === i.title) !== undefined ? (
           <img
-            onClick={addBookmark}
-            src="src/assets/icon-bookmark-full.svg"
+            onClick={() => removeBookmark(i.title)}
+            src="assets/assets/icon-bookmark-full.svg"
             alt=""
           />
         ) : (
           <img
-            onClick={removeBookmark}
-            src="src/assets/icon-bookmark-empty.svg"
+            onClick={() => addBookmark(i.title)}
+            src="assets/assets/icon-bookmark-empty.svg"
             alt=""
           />
         )}
@@ -47,9 +43,9 @@ function MovieCard({ i, checkBookmark }) {
           <p>{i.year}</p>
           <span className="dot">.</span>
           {i.category === "Movie" ? (
-            <img src="src/assets/icon-category-movie.svg" alt="" />
+            <img src="assets/assets/icon-category-movie.svg" alt="" />
           ) : (
-            <img src="src/assets/icon-category-tv.svg" alt="" />
+            <img src="assets/assets/icon-category-tv.svg" alt="" />
           )}
 
           <p>{i.category}</p>

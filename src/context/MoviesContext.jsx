@@ -18,24 +18,17 @@ export function MoviesContextProvider({ children }) {
   //   console.log(data);
 
   const addBookmark = (title) => {
-    const bookmark = data.find((i) => i.title === title);
+    const bookmark = data.find((i) => i?.title === title);
     setBookmarks([...bookmarks, bookmark]);
-    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+    localStorage.setItem("bookmarks", JSON.stringify([...bookmarks, bookmark]));
   };
 
   const removeBookmark = (title) => {
-    const newBookmarks = bookmarks.filter((i) => i.title !== title);
+    const newBookmarks = bookmarks.filter((i) => i?.title !== title);
     setBookmarks(newBookmarks);
     localStorage.setItem("bookmarks", JSON.stringify(newBookmarks));
   };
 
-  const checkBookmark = () => {
-    if (bookmarks) {
-      setBookmarks(false);
-    } else {
-      setBookmarks(true);
-    }
-  };
   useEffect(() => {
     getData();
   }, []);
@@ -43,6 +36,7 @@ export function MoviesContextProvider({ children }) {
   useEffect(() => {
     getData();
     let bookmarks = localStorage.getItem("bookmarks");
+    console.log(bookmarks);
     if (bookmarks) {
       setBookmarks(JSON.parse(bookmarks));
     }
@@ -58,7 +52,6 @@ export function MoviesContextProvider({ children }) {
         removeBookmark,
         bookmarks,
         setBookmarks,
-        checkBookmark,
       }}
     >
       {children}
