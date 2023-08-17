@@ -3,40 +3,10 @@ import React, { useContext, useState, useEffect } from "react";
 import "./MovieCard2.css";
 import { MoviesContext } from "../../src/context/MoviesContext";
 
-function MovieCard2({ i, setBookmarkData }) {
+function MovieCard2({ i, checkBookmark }) {
+  const { bookmarks, addBookmark, removeBookmark } = useContext(MoviesContext);
   const [play, setPlay] = useState(false);
-
-  const [isBookMark, setIsBookMark] = useState(false);
-  let bookmarks = [];
-
-  function handleBookmark() {
-    if (localStorage.getItem("bookmark")) {
-      bookmarks = JSON.parse(localStorage.getItem("bookmark"));
-      console.log(bookmarks);
-      if (bookmarks && bookmarks.includes(i.title)) {
-        bookmarks = bookmarks.filter((item) => item != i.title);
-        setIsBookMark(false);
-      } else {
-        setIsBookMark(true);
-        bookmarks.push(i.title);
-      }
-      localStorage.setItem("bookmark", JSON.stringify(bookmarks));
-    } else {
-      localStorage.setItem("bookmark", JSON.stringify([i.title]));
-      setIsBookMark(true);
-    }
-  }
-
-  const checkBookmark = () => {
-    const bookmarks = JSON.parse(localStorage.getItem("bookmark"));
-    if (bookmarks && bookmarks.includes(i.title)) {
-      setIsBookMark(true);
-    }
-  };
-
-  useEffect(() => {
-    checkBookmark();
-  }, []);
+  console.log(i);
 
   return (
     <div
@@ -56,16 +26,23 @@ function MovieCard2({ i, setBookmarkData }) {
       <div
         className="bookMark"
         onMouseEnter={() => setPlay(false)}
-        onClick={() => {
-          handleBookmark();
-          setBookmarkData(bookmarks);
-        }}
+        onClick={checkBookmark}
       >
-        {isBookMark ? (
-          <img src="src/assets/icon-bookmark-full.svg" alt="" />
+        {console.log(i.title)}
+        {/* {bookmarks.length > 0 &&
+        bookmarks?.find((movie) => movie.title === i.title) ? (
+          <img
+            onClick={() => addBookmark(i.title)}
+            src="src/assets/icon-bookmark-full.svg"
+            alt=""
+          />
         ) : (
-          <img src="src/assets/icon-bookmark-empty.svg" alt="" />
-        )}
+          <img
+            onClick={() => removeBookmark(i.title)}
+            src="src/assets/icon-bookmark-empty.svg"
+            alt=""
+          />
+        )} */}
       </div>
 
       <div className="movieInfo2">

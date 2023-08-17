@@ -13,9 +13,6 @@ function BookmarksPage() {
   const { data, setFiltered, filtered } = useContext(MoviesContext);
   const [inputData, setInputData] = useState("");
   const [result, setResult] = useState([]);
-  const location = useLocation([]);
-  const dataLocation = location.state.bookmarkData;
-  console.log(dataLocation); // bookmarked movies
 
   let newInputData = [];
   // console.log(data);
@@ -77,7 +74,7 @@ function BookmarksPage() {
           })}
         </div>
 
-        {filtered && filtered.length !== 29 ? (
+        {/* {filtered && filtered.length !== 29 ? (
           <div className="result">
             <span className="margin">Found </span>
             <span className="margin">{filtered.length} </span>
@@ -86,28 +83,28 @@ function BookmarksPage() {
             </span>
             <span className="margin"> for '{inputData}'</span>
           </div>
-        ) : null}
+        ) : null} */}
 
-        {filtered && filtered.length != 29 ? (
+        {/* {filtered && filtered.length != 29 ? (
           <h1 className="trending"></h1>
         ) : (
           <h1 className="trending">Bookmarked Movies</h1>
-        )}
+        )} */}
 
-        {/* <div className="movieWrap">
-          {Object.keys(dataLocation).map((i) => {
+        <div className="movieWrap">
+          {/* {dataLocation?.map((i) => {
             if (i.category === "Movie") {
               return <MovieCard i={i}></MovieCard>;
             }
-          })}
-        </div> */}
-        {filtered && filtered.length != 29 ? (
+          })} */}
+        </div>
+        {/* {filtered && filtered.length != 29 ? (
           <h1 className="trending"></h1>
         ) : (
           <h1 className="recommend">Bookmarked TV Series</h1>
         )}
-        {/* <div className="movieWrap flexWrap">
-          {Object.keys(dataLocation).map((i) => {
+        <div className="movieWrap flexWrap">
+          {dataLocation?.map((i) => {
             if (i.category == "TV Series") {
               return <MovieCard i={i}></MovieCard>;
             }

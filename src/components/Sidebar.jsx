@@ -6,14 +6,13 @@ import LoginModal from "./LoginModal";
 import { Link } from "react-router-dom";
 import Img from "./Img";
 
-function Sidebar({ bookmarkData }) {
+function Sidebar() {
   const { user, setFiltered, filtered, loggedIn } = useContext(UserContext);
   const [modal, setModal] = useState(false);
   const [click1, setClick1] = useState(false);
   const [click2, setClick2] = useState(false);
   const [click3, setClick3] = useState(false);
   const [click4, setClick4] = useState(false);
-  console.log(bookmarkData);
 
   function checkModal() {
     if (modal) {
@@ -91,7 +90,7 @@ function Sidebar({ bookmarkData }) {
           />
         </Link>
 
-        <Link to="/bookmarkPage" state={{ bookmarkData: bookmarkData }}>
+        <Link to="/bookmarkPage">
           {/* <img
             className={click4 ? "click" : "sideIcon"}
             src="src/assets/icon-nav-bookmark.svg"

@@ -2,43 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { MoviesContext } from "../../src/context/MoviesContext";
 import "./MovieCard.css";
 import { UserContext } from "../context/UserContext";
-import BookmarksPage from "../pages/BookmarksPage";
 
-function MovieCard({ i, setBookmarkData }) {
+function MovieCard({ i, checkBookmark }) {
   const [play, setPlay] = useState(false);
-
-  const [isBookMark, setIsBookMark] = useState(false);
-
-  let bookmarks = [];
-
-  function handleBookmark() {
-    if (localStorage.getItem("bookmark")) {
-      bookmarks = JSON.parse(localStorage.getItem("bookmark"));
-      // console.log(bookmarks);
-      if (bookmarks && bookmarks.includes(i.title)) {
-        bookmarks = bookmarks.filter((item) => item != i.title);
-        setIsBookMark(false);
-      } else {
-        setIsBookMark(true);
-        bookmarks.push(i.title);
-      }
-      localStorage.setItem("bookmark", JSON.stringify(bookmarks));
-    } else {
-      localStorage.setItem("bookmark", JSON.stringify([i.title]));
-      setIsBookMark(true);
-    }
-  }
-
-  const checkBookmark = () => {
-    const bookmarks = JSON.parse(localStorage.getItem("bookmark"));
-    if (bookmarks && bookmarks.includes(i.title)) {
-      setIsBookMark(true);
-    }
-  };
-
-  useEffect(() => {
-    checkBookmark();
-  }, []);
+  const { bookmarks, addBookmark, removeBookmark } = useContext(MoviesContext);
 
   return (
     <div
@@ -58,15 +25,20 @@ function MovieCard({ i, setBookmarkData }) {
       <div
         className="bookMark"
         onMouseEnter={() => setPlay(false)}
-        onClick={() => {
-          handleBookmark();
-          setBookmarkData(bookmarks);
-        }}
+        onClick={checkBookmark}
       >
-        {isBookMark ? (
-          <img src="src/assets/icon-bookmark-full.svg" alt="" />
+        {bookmarks ? (
+          <img
+            onClick={addBookmark}
+            src="src/assets/icon-bookmark-full.svg"
+            alt=""
+          />
         ) : (
-          <img src="src/assets/icon-bookmark-empty.svg" alt="" />
+          <img
+            onClick={removeBookmark}
+            src="src/assets/icon-bookmark-empty.svg"
+            alt=""
+          />
         )}
       </div>
 
