@@ -73,8 +73,8 @@ function TvPage() {
               </p>
             );
           })}
-        </div>{" "}
-        {filtered && filtered.length !== 29 ? (
+        </div>
+        {filtered && filtered.length !== 29 && inputData !== "" ? (
           <div className="result">
             <span className="margin">Found </span>
             <span className="margin">{filtered.length} </span>

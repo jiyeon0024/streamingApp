@@ -4,14 +4,16 @@ import { UserContext } from "../../src/context/UserContext";
 import { useSearchParams } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import { Link } from "react-router-dom";
+import { MoviesContext } from "../context/MoviesContext";
 
 function Sidebar() {
-  const { user, setFiltered, filtered, loggedIn } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [modal, setModal] = useState(false);
   const [click1, setClick1] = useState(false);
   const [click2, setClick2] = useState(false);
   const [click3, setClick3] = useState(false);
   const [click4, setClick4] = useState(false);
+  const { setFiltered, data } = useContext(MoviesContext);
 
   function checkModal() {
     if (modal) {
@@ -64,6 +66,7 @@ function Sidebar() {
             src="assets/assets/icon-nav-home.svg"
             alt=""
             onClick={() => {
+              setFiltered(data);
               clicked();
             }}
           />
@@ -74,6 +77,7 @@ function Sidebar() {
             src="assets/assets/icon-nav-movies.svg"
             alt=""
             onClick={() => {
+              setFiltered(data);
               clicked2();
             }}
           />
@@ -84,6 +88,7 @@ function Sidebar() {
             src="assets/assets/icon-nav-tv-series.svg"
             alt=""
             onClick={() => {
+              setFiltered(data);
               clicked3();
             }}
           />
@@ -95,6 +100,7 @@ function Sidebar() {
             src="assets/assets/icon-nav-bookmark.svg"
             alt=""
             onClick={() => {
+              setFiltered(data);
               clicked4();
             }}
           />

@@ -74,7 +74,7 @@ function App() {
           })}
         </div>
 
-        {filtered && filtered.length !== 29 ? (
+        {filtered && filtered.length !== 29 && inputData !== "" ? (
           <div className="result">
             <span className="margin">Found </span>
             <span className="margin">{filtered.length} </span>

@@ -6,6 +6,7 @@ export function MoviesContextProvider({ children }) {
   const [data, setData] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
+  const [inputFilterData, setInputFilterData] = useState("");
 
   function getData() {
     fetch("../data.json")
@@ -52,6 +53,7 @@ export function MoviesContextProvider({ children }) {
         removeBookmark,
         bookmarks,
         setBookmarks,
+        setInputFilterData,
       }}
     >
       {children}
