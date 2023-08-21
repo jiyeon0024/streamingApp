@@ -49,12 +49,12 @@ function UserContextProvider({ children }) {
     return localStorage.getItem("user") ? true : false;
   });
 
-  useEffect(() => {
-    if (localStorage.getItem("user")) {
-      setLoggedIn(true);
-      setUser(JSON.parse(localStorage.getItem("user")));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("user")) {
+  //     setLoggedIn(true);
+  //     setUser(JSON.parse(localStorage.getItem("user")));
+  //   }
+  // }, []);
 
   return (
     <UserContext.Provider

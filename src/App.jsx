@@ -47,6 +47,7 @@ function App() {
           }}
           onClick={(e) => {
             e.preventDefault();
+
             let _inputData = inputData.toLowerCase().trim();
 
             newInputData = data.filter((i) =>
