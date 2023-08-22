@@ -20,17 +20,6 @@ function BookmarksPage() {
           placeholder="Search for bookmarked shows"
         />
 
-        {filtered && filtered.length !== 29 ? (
-          <div className="result">
-            <span className="margin">Found </span>
-            <span className="margin">{filtered.length} </span>
-            <span className="margin">
-              {filtered.length == 1 ? "result" : "results"}
-            </span>
-            <span className="margin"> for '{}'</span>
-          </div>
-        ) : null}
-
         {filtered && filtered.length != 29 ? (
           <h1 className="trending"></h1>
         ) : (
@@ -40,17 +29,17 @@ function BookmarksPage() {
         <div className="movieWrap">
           {filtered && filtered.length != 29 ? (
             <>
-              {(bookmarks && filtered).map((i) => {
+              {(bookmarks && filtered).map((i, index) => {
                 if (i?.category === "Movie") {
-                  return <MovieCard2 i={i}></MovieCard2>;
+                  return <MovieCard2 kye={i.title + index} i={i}></MovieCard2>;
                 }
               })}
             </>
           ) : (
             <>
-              {bookmarks.map((i) => {
+              {bookmarks.map((i, index) => {
                 if (i?.category === "Movie") {
-                  return <MovieCard2 i={i}></MovieCard2>;
+                  return <MovieCard2 key={i.title + index} i={i}></MovieCard2>;
                 }
               })}
             </>

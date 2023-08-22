@@ -18,21 +18,11 @@ function TvPage() {
           placeholder="Search for TV series"
         />
 
-        {filtered && filtered.length !== 29 ? (
-          <div className="result">
-            <span className="margin">Found </span>
-            <span className="margin">{filtered.length} </span>
-            <span className="margin">
-              {filtered.length == 1 ? "result" : "results"}
-            </span>
-            <span className="margin"> for '{}'</span>
-          </div>
-        ) : null}
         <h1 className="trending">TV Series</h1>
         <div className="movieWrap">
-          {filtered.map((i) => {
+          {filtered.map((i, index) => {
             if (i.category === "TV Series") {
-              return <MovieCard2 i={i}></MovieCard2>;
+              return <MovieCard2 key={i.title + index} i={i}></MovieCard2>;
             }
           })}
         </div>

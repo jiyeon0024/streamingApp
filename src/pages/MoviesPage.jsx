@@ -18,9 +18,9 @@ function MoviesPage() {
 
         <h1 className="trending">Movies</h1>
         <div className="movieWrap">
-          {filtered.map((i) => {
+          {filtered.map((i, index) => {
             if (i.category === "Movie") {
-              return <MovieCard2 i={i}></MovieCard2>;
+              return <MovieCard2 key={i.title + index} i={i}></MovieCard2>;
             }
           })}
         </div>

@@ -16,17 +16,6 @@ function App() {
       <div className="mainContentBox">
         <SearchInput placeholder="Search for movies or TV series" />
 
-        {filtered && filtered.length !== 29 ? (
-          <div className="result">
-            <span className="margin">Found </span>
-            <span className="margin">{filtered.length} </span>
-            <span className="margin">
-              {filtered.length == 1 ? "result" : "results"}
-            </span>
-            <span className="margin"> for '{}'</span>
-          </div>
-        ) : null}
-
         {filtered && filtered.length != 29 ? (
           <h1 className="trending"></h1>
         ) : (
@@ -34,9 +23,9 @@ function App() {
         )}
 
         <div className="movieWrap">
-          {filtered.map((i) => {
+          {filtered.map((i, index) => {
             if (i.isTrending === true) {
-              return <MovieCard i={i}></MovieCard>;
+              return <MovieCard key={i.title + index} i={i}></MovieCard>;
             }
           })}
         </div>
@@ -46,9 +35,9 @@ function App() {
           <h1 className="recommend">Recommended for you</h1>
         )}
         <div className="movieWrap flexWrap">
-          {filtered.map((i) => {
+          {filtered.map((i, index) => {
             if (i.isTrending === false) {
-              return <MovieCard2 i={i}></MovieCard2>;
+              return <MovieCard2 key={i.title + index} i={i}></MovieCard2>;
             }
           })}
         </div>
