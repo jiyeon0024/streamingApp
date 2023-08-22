@@ -68,15 +68,7 @@ function LoginPage() {
           {pwErr ? <p className="err">Can't empty</p> : null}
         </div>
 
-        <Button>
-          {loggedIn && user ? (
-            <Link to="/" className="link">
-              Login to your account
-            </Link>
-          ) : (
-            <p>Login to your account</p>
-          )}
-        </Button>
+        <Button>Login to your account</Button>
       </div>
     </form>
   );

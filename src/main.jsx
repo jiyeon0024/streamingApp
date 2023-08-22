@@ -12,28 +12,13 @@ import MoviesPage from "./pages/MoviesPage.jsx";
 import TvPage from "./pages/TvPage.jsx";
 import BookmarksPage from "./pages/BookmarksPage.jsx";
 import MovieCard from "./components/MovieCard.jsx";
+import Router from "./router/Router.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <UserContextProvider>
       <MoviesContextProvider>
-        <HashRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <PrivateRoute>
-                  <App />
-                </PrivateRoute>
-              }
-            />
-
-            <Route path="/loginPage" element={<LoginPage />} />
-            <Route path="/moviesPage" element={<MoviesPage />} />
-            <Route path="/tvPage" element={<TvPage />} />
-            <Route path="/bookmarkPage" element={<BookmarksPage />} />
-          </Routes>
-        </HashRouter>
+        <Router />
       </MoviesContextProvider>
     </UserContextProvider>
   </React.StrictMode>

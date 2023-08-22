@@ -197,19 +197,6 @@ body {
   font-weight: 200;
 }
 
-.inputList {
-  background: var(--veryDarkblue);
-  position: absolute;
-  top: 45px;
-  left: 50px;
-  z-index: 10;
-  width: 86.5%;
-  padding: 10px;
-
-  border-radius: 5px;
-  box-shadow: #5a698f 12px 16px 11px -15px;
-}
-
 .list {
   margin-bottom: 8px;
   cursor: pointer;

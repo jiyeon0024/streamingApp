@@ -5,9 +5,23 @@
   gap: 10px;
   width: 90%;
   margin-bottom: 25px;
+  position: relative;
 }
 
 .searchIcon {
   width: 20px;
   cursor: pointer;
+}
+
+.inputList {
+  background: var(--veryDarkblue);
+  position: absolute;
+  top: 45px;
+  left: 0px;
+  z-index: 10;
+  width: 86.5%;
+  padding: 10px;
+
+  border-radius: 5px;
+  box-shadow: #5a698f 12px 16px 11px -15px;
 }

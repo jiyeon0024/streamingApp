@@ -3,85 +3,31 @@ import { useContext, useState } from "react";
 
 import Sidebar from "../components/Sidebar";
 import SearchInput from "../components/SearchInput";
-import MovieCard from "../components/MovieCard";
 import MovieCard2 from "../components/MovieCard2";
 import { MoviesContext } from "../context/MoviesContext";
-import UserContextProvider, { UserContext } from "../context/UserContext";
 
 function BookmarksPage() {
-  const { logout, user, loggedIn } = useContext(UserContext);
-  const { data, setFiltered, filtered, bookmarks } = useContext(MoviesContext);
-  const [inputData, setInputData] = useState("");
-  const [result, setResult] = useState([]);
-
-  let newInputData = [];
-  // console.log(data);
-  console.log(user);
+  const { filtered, bookmarks } = useContext(MoviesContext);
 
   return (
     <div className="wrap">
-      <Sidebar></Sidebar>
+      <Sidebar />
 
       <div className="mainContentBox">
         <SearchInput
-          value={inputData}
+          category={"Bookmarks"}
+          // value={inputData}
           placeholder="Search for bookmarked shows"
-          onChange={(e) => {
-            // console.log(inputData);
-            setInputData(e.target.value);
+        />
 
-            if (e.target.value === "") {
-              setFiltered(data);
-              setResult([]);
-              return;
-            }
-            console.log(inputData);
-            console.log(result);
-
-            let movies = bookmarks.map((i) => {
-              if (i.title.toLowerCase().includes(inputData.toLowerCase())) {
-                return i.title;
-              }
-            });
-            setResult(movies);
-          }}
-          onClick={(e) => {
-            e.preventDefault();
-            let _inputData = inputData.toLowerCase().trim();
-
-            newInputData = bookmarks.filter((i) =>
-              i.title.toLowerCase().includes(_inputData)
-            );
-            // console.log(newInputData[0].title);
-
-            setFiltered(newInputData);
-            setResult([]);
-          }}
-        ></SearchInput>
-        <div className="inputList">
-          {result.map((i) => {
-            return (
-              <p
-                className="list"
-                onClick={() => {
-                  setInputData(i);
-                  setResult([]);
-                }}
-              >
-                {i}
-              </p>
-            );
-          })}
-        </div>
-
-        {filtered && filtered.length !== 29 && inputData !== "" ? (
+        {filtered && filtered.length !== 29 ? (
           <div className="result">
             <span className="margin">Found </span>
             <span className="margin">{filtered.length} </span>
             <span className="margin">
               {filtered.length == 1 ? "result" : "results"}
             </span>
-            <span className="margin"> for '{inputData}'</span>
+            <span className="margin"> for '{}'</span>
           </div>
         ) : null}
 
@@ -133,15 +79,8 @@ function BookmarksPage() {
               })}
             </>
           )}
-
-          {/* {bookmarks.map((i) => {
-            if (i?.category == "TV Series") {
-              return <MovieCard2 i={i}></MovieCard2>;
-            }
-          })} */}
         </div>
       </div>
-      {console.log(bookmarks && filtered)}
     </div>
   );
 }

@@ -2,87 +2,28 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./context/UserContext";
 import Sidebar from "./components/Sidebar";
 import SearchInput from "./components/SearchInput";
-
+import { MoviesContext } from "./context/MoviesContext";
 import MovieCard from "./components/MovieCard";
 import MovieCard2 from "./components/MovieCard2";
-import { MoviesContext } from "./context/MoviesContext";
 
 function App() {
-  const { logout, user, loggedIn } = useContext(UserContext);
-  const { data, setFiltered, filtered } = useContext(MoviesContext);
-  const [inputData, setInputData] = useState("");
-  const [result, setResult] = useState([]);
-
-  let newInputData = [];
-  // console.log(data);
-  // console.log(user);
-  // console.log(loggedIn);
+  const { filtered } = useContext(MoviesContext);
 
   return (
     <div className="wrap">
-      <Sidebar></Sidebar>
+      <Sidebar />
 
       <div className="mainContentBox">
-        <SearchInput
-          value={inputData}
-          placeholder="Search for movies or TV series"
-          onChange={(e) => {
-            // console.log(inputData);
-            setInputData(e.target.value);
+        <SearchInput placeholder="Search for movies or TV series" />
 
-            if (e.target.value === "") {
-              setFiltered(data);
-              setResult([]);
-              return;
-            }
-            // console.log(inputData);
-            // console.log(result);
-
-            let movies = data.map((i) => {
-              if (i.title.toLowerCase().includes(inputData.toLowerCase())) {
-                return i.title;
-              }
-            });
-            setResult(movies);
-          }}
-          onClick={(e) => {
-            e.preventDefault();
-
-            let _inputData = inputData.toLowerCase().trim();
-
-            newInputData = data.filter((i) =>
-              i.title.toLowerCase().includes(_inputData)
-            );
-            // console.log(newInputData[0].title);
-
-            setFiltered(newInputData);
-            setResult([]);
-          }}
-        ></SearchInput>
-        <div className="inputList">
-          {result.map((i) => {
-            return (
-              <p
-                className="list"
-                onClick={() => {
-                  setInputData(i);
-                  setResult([]);
-                }}
-              >
-                {i}
-              </p>
-            );
-          })}
-        </div>
-
-        {filtered && filtered.length !== 29 && inputData !== "" ? (
+        {filtered && filtered.length !== 29 ? (
           <div className="result">
             <span className="margin">Found </span>
             <span className="margin">{filtered.length} </span>
             <span className="margin">
               {filtered.length == 1 ? "result" : "results"}
             </span>
-            <span className="margin"> for '{inputData}'</span>
+            <span className="margin"> for '{}'</span>
           </div>
         ) : null}
 

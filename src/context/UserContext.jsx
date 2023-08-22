@@ -3,8 +3,14 @@ import { createContext, useEffect, useState } from "react";
 export const UserContext = createContext();
 
 function UserContextProvider({ children }) {
-  // const [loggedIn, setLoggedIn] = useState(false);
-  // const [user, setUser] = useState({});
+  const [user, setUser] = useState(() => {
+    const localUser = localStorage.getItem("user");
+    return localUser ? JSON.parse(localUser) : {};
+  });
+
+  const [loggedIn, setLoggedIn] = useState(() => {
+    return localStorage.getItem("user") ? true : false;
+  });
 
   const login = async (email, password) => {
     const response = await fetch("../user.json");
@@ -39,15 +45,6 @@ function UserContextProvider({ children }) {
 
     return;
   };
-
-  const [user, setUser] = useState(() => {
-    const localUser = localStorage.getItem("user");
-    return localUser ? JSON.parse(localUser) : {};
-  });
-
-  const [loggedIn, setLoggedIn] = useState(() => {
-    return localStorage.getItem("user") ? true : false;
-  });
 
   // useEffect(() => {
   //   if (localStorage.getItem("user")) {
