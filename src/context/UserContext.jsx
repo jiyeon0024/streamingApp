@@ -15,7 +15,6 @@ function UserContextProvider({ children }) {
   const login = async (email, password) => {
     const response = await fetch("../user.json");
     const data = await response.json();
-    // console.log(data.users);
 
     data.users.forEach((i) => {
       if (i.email === email && i.password === password) {
@@ -24,34 +23,17 @@ function UserContextProvider({ children }) {
         localStorage.setItem("user", JSON.stringify(i));
 
         return;
-        // } else if (email === "" && password === "") {
-        //   setLoggedIn(false);
-        //   return;
       }
     });
-
-    // console.log(loggedIn);
-    // console.log(user);
   };
 
   const logout = () => {
     setUser({});
     setLoggedIn(false);
-    console.log("logout");
-    // localStorage.removeItem("user");
-
-    // setUser("");
     localStorage.removeItem("user");
 
     return;
   };
-
-  // useEffect(() => {
-  //   if (localStorage.getItem("user")) {
-  //     setLoggedIn(true);
-  //     setUser(JSON.parse(localStorage.getItem("user")));
-  //   }
-  // }, []);
 
   return (
     <UserContext.Provider

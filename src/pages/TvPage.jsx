@@ -8,7 +8,6 @@ import { MoviesContext } from "../context/MoviesContext";
 
 function TvPage() {
   const { filtered } = useContext(MoviesContext);
-
   return (
     <div className="wrap">
       <Sidebar />
@@ -16,11 +15,10 @@ function TvPage() {
       <div className="mainContentBox">
         <SearchInput
           category={"TV Series"}
-          value={inputData}
           placeholder="Search for TV series"
         />
 
-        {filtered && filtered.length !== 29 && inputData !== "" ? (
+        {filtered && filtered.length !== 29 ? (
           <div className="result">
             <span className="margin">Found </span>
             <span className="margin">{filtered.length} </span>

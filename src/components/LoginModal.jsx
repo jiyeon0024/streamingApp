@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 export default function LoginModal() {
   const { user, logout, loggedIn, setLoggedIn, setUser } =
     useContext(UserContext);
-  console.log(user);
   return (
     <div className="loginModalWrap">
       <p className="name">Name: {user.username}</p>
@@ -15,7 +14,6 @@ export default function LoginModal() {
 
       <Button
         onClick={() => {
-          // console.log("logout");
           logout();
 
           return;

@@ -6,7 +6,6 @@ import { UserContext } from "../context/UserContext";
 function MovieCard({ i }) {
   const [play, setPlay] = useState(false);
   const { bookmarks, addBookmark, removeBookmark } = useContext(MoviesContext);
-  console.log(typeof bookmarks);
   return (
     <div
       className="movieBox"

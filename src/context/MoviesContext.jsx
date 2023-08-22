@@ -15,7 +15,6 @@ export function MoviesContextProvider({ children }) {
         setFiltered(val);
       });
   }
-  //   console.log(data);
 
   const addBookmark = (title) => {
     const bookmark = data.find((i) => i?.title === title);
@@ -36,7 +35,6 @@ export function MoviesContextProvider({ children }) {
   useEffect(() => {
     getData();
     let bookmarks = localStorage.getItem("bookmarks");
-    console.log(bookmarks);
     if (bookmarks) {
       setBookmarks(JSON.parse(bookmarks));
     }

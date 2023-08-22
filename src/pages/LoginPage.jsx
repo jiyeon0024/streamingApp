@@ -34,9 +34,6 @@ function LoginPage() {
     }
 
     login(email, password);
-    console.log(loggedIn);
-    console.log(user);
-    console.log(email, password);
   }
   return (
     <form className="mainBox" onSubmit={submit}>

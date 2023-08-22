@@ -6,7 +6,6 @@ import { MoviesContext } from "../../src/context/MoviesContext";
 function MovieCard2({ i, checkBookmark }) {
   const { bookmarks, addBookmark, removeBookmark } = useContext(MoviesContext);
   const [play, setPlay] = useState(false);
-  console.log(i);
 
   return (
     <div
@@ -24,7 +23,6 @@ function MovieCard2({ i, checkBookmark }) {
       <img src={i.thumbnail.regular.large} className="thumbnail"></img>
 
       <div className="bookMark" onMouseEnter={() => setPlay(false)}>
-        {console.log(bookmarks?.find((movie) => movie?.title === i.title))}
         {bookmarks?.find((movie) => movie?.title === i.title) !== undefined ? (
           <img
             onClick={() => removeBookmark(i.title)}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SearchInput.css";
 import Input from "./Input";
 import { useContext } from "react";
@@ -8,6 +8,37 @@ function SearchInput({ category = "", placeholder }) {
   const [inputData, setInputData] = useState("");
   const { data, setFiltered, bookmarks } = useContext(MoviesContext);
   const [result, setResult] = useState([]);
+
+  const handleChange = (e) => {
+    let _inputData = e.target.value;
+    setInputData(_inputData);
+  };
+
+  useEffect(() => {
+    if (inputData === "") {
+      setFiltered(data);
+      setResult([]);
+      return;
+    }
+    let movies;
+    if (category === "Bookmarks") {
+      movies = bookmarks.map((i) => {
+        if (i.title.toLowerCase().includes(inputData.toLowerCase())) {
+          return i.title;
+        }
+      });
+    } else {
+      movies = data.map((i) => {
+        if (
+          i.title.toLowerCase().includes(inputData.toLowerCase()) &&
+          (category !== "" ? i.category === category : true)
+        ) {
+          return i.title;
+        }
+      });
+    }
+    setResult(movies);
+  }, [inputData]);
 
   return (
     <div className="searchInputWrap">
@@ -26,15 +57,12 @@ function SearchInput({ category = "", placeholder }) {
               i.title.toLowerCase().includes(_inputData)
             );
           } else {
-            data.filter((i) =>
-              i.title.toLowerCase().includes(_inputData.toLowerCase()) &&
-              category !== ""
-                ? i.category === category
-                : true
+            newInputData = data.filter(
+              (i) =>
+                i.title.toLowerCase().includes(_inputData.toLowerCase()) &&
+                (category !== "" ? i.category === category : true)
             );
           }
-
-          // console.log(newInputData[0].title);
 
           setFiltered(newInputData);
           setResult([]);
@@ -44,38 +72,7 @@ function SearchInput({ category = "", placeholder }) {
         className="searchInput"
         value={inputData}
         placeholder={placeholder}
-        onChange={(e) => {
-          // console.log(inputData);
-          setInputData(e.target.value);
-
-          if (e.target.value === "") {
-            setFiltered(data);
-            setResult([]);
-            return;
-          }
-          // console.log(inputData);
-          // console.log(result);
-          let movies;
-          if (category === "Bookmarks") {
-            movies = bookmarks.map((i) => {
-              if (i.title.toLowerCase().includes(inputData.toLowerCase())) {
-                return i.title;
-              }
-            });
-          } else {
-            movies = data.map((i) => {
-              if (
-                i.title.toLowerCase().includes(inputData.toLowerCase()) &&
-                category !== ""
-                  ? i.category === category
-                  : true
-              ) {
-                return i.title;
-              }
-            });
-          }
-          setResult(movies);
-        }}
+        onChange={handleChange}
       />
       <div className="inputList">
         {result.map((i) => {
